@@ -1,1 +1,357 @@
+/*
+	mycss.css
+	Mark Whitcomb
+	6/7/2019
+	Copyright
 
+*/
+
+@media only screen and (max-width: 575.98px) {
+    .company-name {
+        /* text-align: center; */
+    }
+    .co-name1 {
+        font-size: 1.25rem;
+        /* Squish co-name1 since it's going to wrap. */
+        line-height: 0.8;
+    }
+    .co-name2 {
+        font-size: 0.75rem;
+    }
+    .my-bgimg1 {
+        background: url(../images/pic1-tall.jpg) no-repeat center center;
+        background-size: cover;
+        height: 100%;
+    }
+    .my-bgimg3 {
+        background: url(../images/pic3-tall.jpg) no-repeat center center;
+        background-size: cover;
+        height: 100%;
+    }
+}
+
+@media only screen and (min-width: 576px) {
+    .co-name1 {
+        font-size: 2.0rem;
+    }
+    .co-name2 {
+        font-size: 1.25rem;
+        margin-left: 1.5rem;
+    }
+    /*	Below added so desktop has navs across. */
+    .navbar-expand-sm {
+        flex-flow: column wrap;
+    }
+    .my-bgimg1 {
+        background: url(../images/pic1-wide.jpg) no-repeat center center;
+        background-size: cover;
+        height: 100%;
+    }
+    .my-bgimg3 {
+        background: url(../images/pic3-wide.jpg) no-repeat center center;
+        background-size: cover;
+        height: 100%;
+    }
+    .pg4.login-form {
+        width: 50%;
+        margin: 0 auto;
+    }
+    /* Override when in big mode else leave to 100% default */
+    .form-control {
+        width: auto;
+    }
+}
+
+
+/*
+    On a really big screen, let's put the second div
+    right on top of the first.
+*/
+
+@media only screen and (min-width: 1200px) {
+    .alt-bg1 {
+        padding-right: 3rem !important;
+        padding-left: 3rem !important;
+        padding-top: 1rem;
+    }
+}
+
+body {
+    font-family: 'Montserrat', Arial, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: 'Shadows Into Light Two', Arial, sans-serif;
+}
+
+.company-name {
+    font-family: 'Shadows Into Light Two', Arial, sans-serif;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.mycontainer {
+    padding: 0;
+}
+
+
+/*
+    I'm taking off all the jumbotron formatting
+    that bootstrap does to jumbotrons.  I'm only
+    using it as an 'easy' way to put text on top
+    of a picture and have the picture resize.
+*/
+
+.my-bgimg1 {
+    margin: 0;
+    border-radius: 0;
+}
+
+.my-bgimg1 h3 {
+    color: #ffffff;
+    padding: 2rem;
+    margin-bottom: 0;
+}
+
+.my-bgimg2 {
+    background: url(../images/pic2.jpg) no-repeat center center;
+    height: 100%;
+    margin: 0;
+    border-radius: 0;
+}
+
+.my-bgimg3 {
+    margin: 0;
+    border-radius: 0;
+}
+
+.alt-bg1 {
+    background-color: #b3c3d4;
+    padding: 1rem;
+}
+
+.my-bgimg4 {
+    background: url(../images/pic4.jpg) no-repeat center center;
+    background-size: cover;
+    margin: 0;
+    border-radius: 0;
+}
+
+.pg4.words-up-front {
+    color: #ffffff;
+}
+
+div.pg4 {
+    background: rgba(255, 255, 255, .50);
+}
+
+
+/*
+    The margin: 0 auto; I got from stackoverflow
+    did what I wanted to do - horizontally align a single
+    fucking div within another div.
+    I tried everything I could think of in bootstrap-ese
+    and nothing worked, as usual.
+    (I.e., d-block col justify-content-center all over the place)
+*/
+
+.pg4.results {
+    margin-top: 2rem;
+}
+
+.err {
+    color: red;
+}
+
+.form-control-label {
+    font-weight: 800;
+}
+
+#modPSize {
+    width: 7rem;
+}
+
+.rightjust {
+    float: right;
+}
+
+
+/*
+ * Style 'Calc' button
+
+
+.btn-primary {
+    color: #ffffff;
+    background-color: #18a5a3;
+    border: none;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    color: #ffffff;
+    background-color: #638aab;
+}
+
+.btn-primary:active {
+    color: #000000;
+    background-color: #0840ba;
+}
+ */
+
+.my-copr {
+    font-style: italic;
+    font-size: 0.75rem;
+}
+
+
+/*************************************************
+ *   Below here is just for the navigation
+**************************************************/
+
+.nav-link {
+    font-style: italic;
+}
+
+
+/*
+	Below sets the bg to dark blue
+	and the text to white.
+*/
+
+.bg-my-nav-color {
+    background-color: #436b95;
+    color: #ffffff;
+}
+
+
+/*
+	Below defines a small area.
+	Not the bars, just the area for
+	3bar.
+*/
+
+.navbar-toggler {
+    width: 32px;
+    height: 18px;
+    border: none;
+    cursor: pointer;
+    transition: all .2s;
+}
+
+
+/*
+	Below finally worked but
+	it really looks like shit.
+	TODO - Clean this out.
+*/
+
+.navbar-toggle:focus,
+.navbar-toggle:active,
+button:focus,
+button:active {
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    background: transparent !important;
+    outline: none !important;
+}
+
+
+/* 
+	Below defines each span as position: absolute
+	with width and height.  
+	Needs position: absolute to show up at all
+	but the 'absolute' gives a new set of problems
+	mainly in positioning.  
+	You now need to make sure the containing box is
+	position: relative and all contained stuff is 
+	position: absolute.  All contained top/bottom/left/right
+	will be relative to parent box.
+	The right: 0; shoves them to flush left.
+*/
+
+.navbar-toggler .hamburger span {
+    right: 0;
+    width: 30px;
+    height: 2px;
+    background-color: #ffffff;
+    position: absolute;
+}
+
+
+/*
+	Below will force my hamburger to be on top
+	of the navbar-toggler positon but I don't 
+	know why.
+*/
+
+.my-collapse {
+    position: relative;
+}
+
+
+/*
+	Below draws the bars but not in the same
+	place as button.navbar-toggler.
+	Seems like I now need to move .hamburger
+	to be on top of button.navbar-toggler.
+	I also have two active targets for 'click',
+	both open and close the nav-dropdown.
+*/
+
+.navbar-toggler .hamburger span:nth-child(1) {
+    top: 0;
+    transition: all .2s;
+}
+
+.navbar-toggler .hamburger span:nth-child(2) {
+    top: 8px;
+    transition: all .15s;
+}
+
+.navbar-toggler .hamburger span:nth-child(3) {
+    top: 8px;
+    transition: all .15s;
+}
+
+.navbar-toggler .hamburger span:nth-child(4) {
+    top: 16px;
+    transition: all .2s;
+}
+
+
+/*
+	This, along with my js, will cause the 'X' to happen.
+*/
+
+.my-collapse.makeanx .hamburger span:nth-child(1) {
+    top: 8px;
+    width: 0;
+    opacity: 0;
+    right: 50%;
+    transition: all .2s;
+}
+
+.my-collapse.makeanx .hamburger span:nth-child(2) {
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    transition: all .25s;
+}
+
+.my-collapse.makeanx .hamburger span:nth-child(3) {
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    transition: all .25s;
+}
+
+.my-collapse.makeanx .hamburger span:nth-child(4) {
+    top: 8px;
+    width: 0;
+    opacity: 0;
+    right: 50%;
+    transition: all .2s;
+}
