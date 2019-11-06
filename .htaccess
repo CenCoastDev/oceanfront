@@ -1,0 +1,6 @@
+# The apache22 way of doing it
+#Order Deny,Allow
+#Deny from 195.206.253.146
+# The apache24 way of doing it
+Require all granted
+Require not ip 195.206.253.146
