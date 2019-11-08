@@ -86,8 +86,8 @@
                         <input type="text" class="form-control" name="userid" data-form-field="userid" required id="userid" size="20" maxlength="64">
                     </div>
                     <div class="form-group">
-                        <label class="form-control-label" for="pw">Password</label>
-                        <input type="text" class="form-control" name="pw" data-form-field="pw" required id="pw" size="25" maxlength="64">
+                        <label class="form-control-label" for="pass">Password</label>
+                        <input type="text" class="form-control" name="pass" data-form-field="pass" required id="pass" size="25" maxlength="64">
                     </div>
                     <div class="form-group">
                         <label class="form-control-label" for="first">First Name</label>
@@ -131,14 +131,14 @@
                 <p id="errMsg" class="err"></p>
             </div>
 
+            <!-- The width of textarea will be set in js, depends on size of div -->
+            <div class="pg4 results p-3">
+                <h5>Below is an area used by the programmer for messages.</h5>
+                <textarea class="results-textarea" rows="3"></textarea>
+            </div>
+
         </div>
         <!-- end big picture thing -->
-
-        <!-- The width of textarea will be set in js, depends on size of div -->
-        <div class="pg4 results p-3">
-            <h5>Below is an area used by the programmer to see if anything went wrong.</h5>
-            <textarea class="results-textarea" rows="3"></textarea>
-        </div>
 
     </div>
     <!-- end container -->
@@ -151,6 +151,14 @@
 
     <script src="js/myvalidate.js"></script>
     <script src="js/mynewacct.js"></script>
+    <script>
+        $(function() {
+
+            let $divsize = $('.results').width();
+
+            $('.results-textarea').width($divsize - 32);
+        })
+    </script>
 
 </body>
 

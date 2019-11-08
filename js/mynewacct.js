@@ -16,13 +16,13 @@ function doSomething() {
 
     // Last check to see if fields are ok
     if (($("#userid").valid() == false) ||
-        ($("#pw").valid() == false)) {
+        ($("#pass").valid() == false)) {
         return;
     }
 
     // Get values from the input fields
     let $userid = $('#userid').val();
-    let $pw = $('#pw').val();
+    let $pass = $('#pass').val();
     let $first = $('#first').val();
     let $last = $('#last').val();
     let $email = $('#email').val();
@@ -35,7 +35,7 @@ function doSomething() {
     // Build json data
     let data = {
         "userid": $userid,
-        "pw": $pw,
+        "pass": $pass,
         "first": $first,
         "last": $last,
         "email": $email,
@@ -46,7 +46,7 @@ function doSomething() {
         "phone": $phone
     };
 
-    fetch("php/existsUser.php", {
+    fetch("php/newUser.php", {
             method: "POST",
             mode: "cors",
             headers: {
