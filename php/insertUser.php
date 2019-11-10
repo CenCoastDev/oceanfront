@@ -28,7 +28,7 @@ require_once ('OcUser.php');
  *                  err if sql error
  * @return bool true/false false if err, else true
  */
-function insertUser ($myUser, &$name, &$retcode) {
+function insertUser (&$myUser, &$name, &$retcode) {
 
     $retcode = "ok";
 
