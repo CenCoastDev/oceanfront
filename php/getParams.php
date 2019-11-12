@@ -11,7 +11,7 @@
  declare (strict_types=1);
 
  // My connection parameters object (or you can call it a 'class').
- require_once('DbParams.php');
+ require_once 'DbParams.php';
 
  function getParams() {
 

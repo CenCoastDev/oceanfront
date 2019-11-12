@@ -28,7 +28,7 @@ require_once ('OcUser.php');
  *                  err if sql error
  * @return bool true/false false if err, else true
  */
-function insertUser (&$myUser, &$name, &$retcode) {
+function insertUser (OcUser &$myUser, &$retcode) {
 
     $retcode = "ok";
 
@@ -65,12 +65,9 @@ function insertUser (&$myUser, &$name, &$retcode) {
         $pdo = new PDO($dsn, $dbuser, $dbpass, $options);
     } catch (PDOException $e) {
         error_log($e->getMessage());
-        $name = "Err on PDO declaration";
-        $retcode = "err";
+        $retcode = "Err on PDO declaration";
         return false;
     }
-
-    $first = "";
 
     try {
         $stmt = $pdo->prepare("insert into user values ...");
@@ -79,10 +76,8 @@ function insertUser (&$myUser, &$name, &$retcode) {
 
         if ($count > 0) {
             $row = $stmt->fetch();
-            $first = $row['first'];
             $retcode = "ok";
         } else {
-            $first = "Doesnt exist";
             $retcode = "not";
         }
 
@@ -90,8 +85,7 @@ function insertUser (&$myUser, &$name, &$retcode) {
         // Below 'throw new' was from...I don't know and I don't understand it.
         // throw new PDOException($e->getMessage(), (int)$e->getCode());
         error_log($e->getMessage());
-        $name = "Err on prepare or execute";
-        $retcode = "err";
+        $retcode = "Err on prepare or execute";
         return false;
     } finally {
         // Close database connection.
@@ -100,7 +94,7 @@ function insertUser (&$myUser, &$name, &$retcode) {
         $pdo = null;
     }
 
-    $name = $first;
+    $retcode = "ok";
 
     return true;
 }

@@ -10,9 +10,9 @@
  */
 declare (strict_types=1);
 
-include ('loginConstants.php');
-require_once('sanitizeLogin.php');
-require_once('fetchUser.php');
+include 'loginConstants.php';
+require_once 'sanitizeLogin.php';
+require_once 'fetchUser.php';
 
 // store returned data here
 class JsonData {

@@ -11,9 +11,9 @@
 declare (strict_types=1);
 
 // DBParams is an object that stores values
-require_once ('DbParams.php');
+require_once 'DbParams.php';
 // getPrams just gets db connect parameters
-require_once ('getParams.php');
+require_once 'getParams.php';
 
 /**
  * do the sql select
