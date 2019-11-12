@@ -14,8 +14,6 @@ declare (strict_types=1);
 require_once ('DbParams.php');
 // getPrams just gets db connect parameters
 require_once ('getParams.php');
-// OcUser is an object that stores values
-require_once ('OcUser.php');
 
 /**
  * do the sql select
@@ -28,7 +26,7 @@ require_once ('OcUser.php');
  *                  err if sql error
  * @return bool true/false false if err, else true
  */
-function insertUser (OcUser &$myUser, &$retcode) {
+function insertUser (OcUser $myUser, &$retcode) {
 
     $retcode = "ok";
 
@@ -69,9 +67,34 @@ function insertUser (OcUser &$myUser, &$retcode) {
         return false;
     }
 
+    $test = $myUser->getUser();
+
     try {
-        $stmt = $pdo->prepare("insert into user values ...");
-        $stmt->execute(['user' => $user]);
+        $stmt = $pdo->prepare
+        ("insert into user 
+          (user, 
+          pass,
+          email,
+          first,
+          last,
+          street,
+          city,
+          state,
+          zip,
+          phone) values 
+          (?,?,?,?,?,?,?,?,?,?)");
+        
+        $stmt->execute([$myUser->getUser(), 
+        $myUser->getPass(),
+        $myUser->getEmail(),
+        $myUser->getFirst(),
+        $myUser->getLast(),
+        $myUser->getStreet(),
+        $myUser->getCity(),
+        $myUser->getState(),
+        $myUser->getZip(),
+        $myUser->getPhone()]);
+
         $count = $stmt->rowCount();
 
         if ($count > 0) {
