@@ -124,10 +124,10 @@ if (fetchUser($user, $name, $retcode, $hashed_pw) === true) {
         $returnData->retname = "doesn't exist";
     }
 	
-	if (password_verify($pw, $hashed_pw) {
-		$returnData->return = "ok"
+	if (password_verify($pw, $hashed_pw)) {
+		$returnData->return = "ok";
 	} else {
-		$returnData->return = "ng"
+		$returnData->return = "ng";
 		$returnData->retname = "Please try again";
 	}
 
