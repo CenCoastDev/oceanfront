@@ -24,9 +24,10 @@ require_once 'getParams.php';
  *                  ok if user exists
  *                  not if user doesn't exist
  *                  err if sql error
+ * @param string $hashed_pw password value stored in sql 
  * @return bool true/false false if err, else true
  */
-function fetchUser ($user, &$name, &$retcode) {
+function fetchUser ($user, &$name, &$retcode, &$hashed_pw) {
 
     $retcode = "ok";
 
@@ -69,15 +70,17 @@ function fetchUser ($user, &$name, &$retcode) {
     }
 
     $first = "";
+	$pass = "";
 
     try {
-        $stmt = $pdo->prepare("select first from user where user = :user");
+        $stmt = $pdo->prepare("select first, pass from user where user = :user");
         $stmt->execute(['user' => $user]);
         $count = $stmt->rowCount();
 
         if ($count > 0) {
             $row = $stmt->fetch();
             $first = $row['first'];
+			$pass = $row['pass'];
             $retcode = "ok";
         } else {
             $first = "Doesnt exist";
@@ -99,6 +102,7 @@ function fetchUser ($user, &$name, &$retcode) {
     }
 
     $name = $first;
+	$hashed_pw = $pass;
 
     return true;
 }

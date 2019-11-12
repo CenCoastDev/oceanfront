@@ -60,10 +60,12 @@ if (is_null($data)) {
     return false;
 }
 
-// $userIn came in from screen
+// these fields are from screen
 $userIn = "";
-// $user is after we wash it thru sanitizeThis
+$pwIn = "";
+// these fields are after we wash them 
 $user = "";
+$pw = "";
 
 if (is_array($data)) {
     if (array_key_exists("userid", $data)) {
@@ -72,6 +74,12 @@ if (is_array($data)) {
         setup_err("js array doesn't have userid in it");
         return false;
     } 
+	if (array_key_exists("pw", $data)) {
+		$pwIn = $data["pw"];
+	} else {
+		setup_err("js array doesn't have pw in it");
+		return false;
+	}
 } else {
     setup_err("data from js not an array");
     return false;
@@ -90,6 +98,13 @@ if (sanitizeThis($userIn, 'user', SIZEOF_USER, $user)) {
     return false;
 }
 
+if (sanitizeThis($pwIn, 'pass', SIZEOF_PASSWORD, $pw)) {
+	// continue - I should have value in $pw
+} else {
+	setup_err("Password has something in it that we don't like");
+	return false;
+}
+
 // Below is going to be returned by the fetch of the user.
 $name = "";
 $retcode = "";
@@ -101,15 +116,23 @@ $retcode = "";
 // - something went wrong (probably connection, sql)
 //      pass what went wrong back in $name
 // How do you tell here that $name, $retcode are passed by reference?
-if (fetchUser($user, $name, $retcode) === true) {
+if (fetchUser($user, $name, $retcode, $hashed_pw) === true) {
     if ($retcode === 'ok') {
-        $returnData->return = "ok";
         $returnData->retname = $name;
     } else {
         $returnData->return = "ok";
         $returnData->retname = "doesn't exist";
     }
-    echo json_encode($returnData);
+	
+	if (password_verify($pw, $hashed_pw) {
+		$returnData->return = "ok"
+	} else {
+		$returnData->return = "ng"
+		$returnData->retname = "Please try again";
+	}
+
+	echo json_encode($returnData);
+	
 } else {
     // if fetchUser had prob, prob will return in $name
     setup_err($name);

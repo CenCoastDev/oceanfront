@@ -67,7 +67,12 @@ function insertUser (OcUser $myUser, &$retcode) {
         return false;
     }
 
-    $test = $myUser->getUser();
+	// Hash the password.
+	// I'm assuming by now that anything that could be checked
+	// has been checked.  At some point, you have to say
+	// you're done.
+	$temp_hashed_and_salted = password_hash($myUser->getPass(), 
+	                                        PASSWORD_ARGON2ID);
 
     try {
         $stmt = $pdo->prepare
@@ -85,7 +90,7 @@ function insertUser (OcUser $myUser, &$retcode) {
           (?,?,?,?,?,?,?,?,?,?)");
         
         $stmt->execute([$myUser->getUser(), 
-        $myUser->getPass(),
+        $temp_hashed_and_salted,
         $myUser->getEmail(),
         $myUser->getFirst(),
         $myUser->getLast(),
@@ -98,7 +103,6 @@ function insertUser (OcUser $myUser, &$retcode) {
         $count = $stmt->rowCount();
 
         if ($count > 0) {
-            $row = $stmt->fetch();
             $retcode = "ok";
         } else {
             $retcode = "not";
