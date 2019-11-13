@@ -72,7 +72,7 @@ function insertUser (OcUser $myUser, &$retcode) {
 	// has been checked.  At some point, you have to say
 	// you're done.
 	$temp_hashed_and_salted = password_hash($myUser->getPass(), 
-	                                        PASSWORD_ARGON2ID);
+	                                    PASSWORD_ARGON2I);
 
     try {
         $stmt = $pdo->prepare
