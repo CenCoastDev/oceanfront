@@ -64,6 +64,8 @@ function fetchUser ($user, &$name, &$retcode, &$hashed_pw) {
         $pdo = new PDO($dsn, $dbuser, $dbpass, $options);
     } catch (PDOException $e) {
         error_log($e->getMessage());
+        // too much information
+        // error_log($e->getTraceAsString());
         $name = "Err on PDO declaration";
         $retcode = "err";
         return false;
