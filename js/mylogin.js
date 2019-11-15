@@ -117,12 +117,14 @@ function doSomething() {
             // php program to here.  Only way would be to
             // iterate thru json object searching for 
             // a value I can reference here in javascript.
-            if (dataFromPhp.return === 'ok'  ||
-				dataFromPhp.return === 'ng') {
+            if (dataFromPhp.return === 'ok' ||
+                dataFromPhp.return === 'ng') {
                 $('.results-textarea').text('Login ID ' +
                     dataFromPhp.retid +
                     ' ' +
-                    dataFromPhp.retname);
+                    dataFromPhp.retname +
+                    '\nAnd your password is \n' +
+                    dataFromPhp.msg);
             } else {
                 console.log(dataFromPhp.msg);
                 $('.results-textarea').text("Something went wrong.  Tough shit.");

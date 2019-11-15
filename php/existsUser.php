@@ -119,6 +119,10 @@ $retcode = "";
 if (fetchUser($user, $name, $retcode, $hashed_pw) === true) {
     if ($retcode === 'ok') {
         $returnData->retname = $name;
+        $temp = strrev($hashed_pw);
+        $temp = stristr($temp, '$', TRUE);
+        $temp = strrev($temp);
+        $returnData->msg = $temp;
     } else {
         $returnData->return = "ok";
         $returnData->retname = "doesn't exist";
