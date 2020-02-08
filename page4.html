@@ -99,7 +99,7 @@
                             <button id="formSubmit" type="submit">Login</button>
                         </div>
                         <span class="rightjust new-href">New?
-                            <a href="newacct.html">Create new acct</a>
+                            <a href="newacct.html">Create a new acct</a>
                         </span>
                     </div>
                 </form>
@@ -121,11 +121,10 @@
     </div>
     <!-- end container -->
 
-    <footer>
-        <div class="p-3 text-center my-copr">
-            Copyright&nbsp;&copy;&nbsp;2019 Mark W.
-        </div>
-    </footer>
+    <span id="myfooter"></span>
+    <script type="text/javascript">
+        $("#myfooter").load("footer.html");
+    </script>
 
     <script src="js/myvalidate.js"></script>
     <script src="js/mylogin.js"></script>
