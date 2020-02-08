@@ -53,18 +53,7 @@
 
                 <!-- Links -->
                 <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="page2.html">What?</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="page3.html">Why?</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="page4.html">Login</a>
-                    </li>
+                    <?php include ("nav-items.html"); ?>
                 </ul>
             </div>
             <!-- end div collapse -->
