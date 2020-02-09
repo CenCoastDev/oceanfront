@@ -122,7 +122,7 @@
 
             <!-- The width of textarea will be set in js, depends on size of div -->
             <div class="pg4 results p-3">
-                <h5>Below is an area used by the programmer for messages.</h5>
+                <h5>Below is an area used for messages.</h5>
                 <textarea class="results-textarea" rows="3"></textarea>
             </div>
 
